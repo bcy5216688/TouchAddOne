@@ -12,7 +12,6 @@ cc.Class({
         },
     },
 
-    // use this for initialization
     onLoad: function () {
         this.squares = [
             [null,null,null,null,null],
@@ -39,7 +38,7 @@ cc.Class({
                         break;
                     }
                 }
-                square.getComponent("Square").setNum(parseInt(randomNum),true);
+                square.getComponent("Square").setNum(parseInt(randomNum),false);
                 var posX = 5 + square.width/2 + (square.width + 5)*col;
                 var posY = 5 + square.height/2 + (square.height + 5)*row;
                 square.setPosition(posX,posY);
@@ -126,9 +125,8 @@ cc.Class({
                 this.squares[row][col].getComponent("Square").destorySquare();
             }
         }
-    }
+    },
 
-    // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
 
     // },

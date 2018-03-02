@@ -8,7 +8,6 @@ cc.Class({
         btnEffect:cc.AudioClip
     },
 
-    // use this for initialization
     onLoad: function () {
         // this.bgSpr.width = cc.winSize.width;
         // this.bgSpr.height = cc.winSize.height;
@@ -22,9 +21,8 @@ cc.Class({
     startGame: function () {
         cc.audioEngine.playEffect(this.btnEffect);
         cc.director.loadScene("GameScene")
-    }
+    },
 
-    // called every frame, uncomment this function to activate update callback
     // update: function (dt) {
 
     // },
