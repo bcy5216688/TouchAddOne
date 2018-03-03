@@ -18,6 +18,15 @@ cc.Class({
         },this.node);
     },
 
+    newSquare: function(row,col){
+        var posX = 5 + this.node.width/2 + (this.node.width + 5)*col;
+        var posY = 5 + this.node.height/2 + (this.node.height + 5)*row;
+        this.node.setPosition(cc.p(posX,posY));
+        this.node.setScale(0);
+        this.node.runAction(cc.scaleTo(0.1,1));
+        this.setArrPos(row,col);
+    },
+
     destorySquare:function(){
         var action = cc.sequence(cc.scaleTo(0.1,0),cc.callFunc(function(node){
             node.destroy();
@@ -31,9 +40,27 @@ cc.Class({
         this.col = col;
     },
 
+    moveSquare: function (row,col) {
+        this.row = row;
+        this.col = col;
+        this.node.stopAllActions();
+        var posX = 5 + this.node.width/2 + (this.node.width + 5)*col;
+        var posY = 5 + this.node.height/2 + (this.node.height + 5)*row;
+        var action = cc.moveTo(0.2,cc.p(posX,posY));
+        this.node.runAction(action);
+    },
+
     setNum:function(num,exeLogic){
         this.numLabel.string = num;
         this.num = num;
+        this.setColor(num);
+        // this.node.runAction(cc.sequence(cc.scaleTo(0.15,1.5),cc.scaleTo(0.15,1)));
+        if(exeLogic){
+            this.game.operateLogic(this.num,this.row,this.col);
+        }
+    },
+
+    setColor: function (num) {
         switch(num){
             case 1:
                 this.node.color = Colors.num1;
@@ -99,11 +126,7 @@ cc.Class({
                 this.node.color = Colors.nums;
                 break;
         }
-        // this.node.runAction(cc.sequence(cc.scaleTo(0.15,1.5),cc.scaleTo(0.15,1)));
-        if(exeLogic){
-            this.game.operateLogic(this.num,this.row,this.col);
-        }
-    },
+    }
 
     // update: function (dt) {
 
