@@ -43,6 +43,7 @@ cc.Class({
     moveSquare: function (row,col) {
         this.row = row;
         this.col = col;
+        this.setArrPos(row,col);
         this.node.stopAllActions();
         var posX = 5 + this.node.width/2 + (this.node.width + 5)*col;
         var posY = 5 + this.node.height/2 + (this.node.height + 5)*row;

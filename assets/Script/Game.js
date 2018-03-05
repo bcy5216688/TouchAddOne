@@ -141,7 +141,7 @@ cc.Class({
             var checkFunc = cc.callFunc(function() {
                 this.checkMovedSquares();
             }.bind(this));
-            var seqAction = cc.sequence(delay,endFunc,cc.delayTime(0.4),checkFunc);
+            var seqAction = cc.sequence(delay,endFunc,cc.delayTime(0.3),checkFunc);
             this.node.runAction(seqAction);
         }
     },
@@ -171,8 +171,8 @@ cc.Class({
 
     checkMovedSquares: function () {
         for (var index in this.checkArr) {
-            var row = this.checkArr[index].split("#")[0];
-            var col = this.checkArr[index].split("#")[1];
+            var row = parseInt(this.checkArr[index].split("#")[0]);
+            var col = parseInt(this.checkArr[index].split("#")[1]);
             var square = this.squares[row][col];
             if (square !== null) {
                 var squareScript = square.getComponent("Square");
